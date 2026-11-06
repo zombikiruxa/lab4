@@ -73,6 +73,38 @@ namespace Lab4Git
             message.Location = new Point(40, 35);
             message.Size = new Size(390, 40);
 
+            Label nameLabel = new Label();
+            nameLabel.Text = "Введите ваше имя:";
+            nameLabel.Location = new Point(100, 85);
+            nameLabel.Size = new Size(260, 25);
+
+            TextBox nameBox = new TextBox();
+            nameBox.Location = new Point(100, 115);
+            nameBox.Size = new Size(260, 25);
+
+            Button helloButton = new Button();
+            helloButton.Text = "Поздороваться";
+            helloButton.Location = new Point(100, 160);
+            helloButton.Size = new Size(260, 40);
+
+            helloButton.Click += delegate
+            {
+                string name = nameBox.Text.Trim();
+
+                if (name.Length == 0)
+                {
+                    MessageBox.Show(
+                        "Сначала введите имя.",
+                        "Ошибка ввода");
+                }
+                else
+                {
+                    MessageBox.Show(
+                        "Привет, " + name + "!",
+                        "Приветствие");
+                }
+            };
+
             Button backButton = new Button();
             backButton.Text = "Вернуться назад";
             backButton.Location = new Point(100, 220);
@@ -80,6 +112,9 @@ namespace Lab4Git
             backButton.Click += delegate { Close(); };
 
             Controls.Add(message);
+            Controls.Add(nameLabel);
+            Controls.Add(nameBox);
+            Controls.Add(helloButton);
             Controls.Add(backButton);
         }
     }
